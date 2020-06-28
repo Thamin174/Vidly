@@ -59,7 +59,7 @@ namespace Vidly.Controllers
 
             _context.SaveChanges();
 
-            return View("Index", "Customers");
+            return RedirectToAction("Index", "Customers");
         }
 
         public ActionResult Details(int id)
