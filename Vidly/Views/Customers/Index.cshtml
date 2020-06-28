@@ -1,0 +1,37 @@
+﻿@model IEnumerable<Vidly.Models.Customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@if (Model != null)
+{
+<table class="table table-bordered table-hover">
+    <thead>
+        <tr>
+            <th>Customer</th>
+            <th>Membership Type</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var customer in Model)
+        {
+        <tr>
+            <td>@Html.ActionLink(customer.Name, "Details", "Customers", new { id = customer.Id }, null)</td>
+            <td>@customer.MembershipType.Name</td>
+            <td>
+                <a href="@Url.Action("Edit", new { customer.Id})" class="btn btn-primary">Edit</a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+}
+
+else
+{
+<p>We dont have any record yet.</p>
+}
